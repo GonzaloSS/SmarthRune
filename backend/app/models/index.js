@@ -27,16 +27,28 @@ db.sequelize = sequelize;
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.level = require("./level.model.js")(sequelize, Sequelize);
 db.character = require("./character.model.js")(sequelize, Sequelize);
+db.bisum = require("./bisum.model.js")(sequelize, Sequelize);
 
 // ASSOCIATIONS
 
-db.user.hasMany(db.character, { as: "characterId" }, 
+db.user.hasMany(db.character, 
   { onDelete: "cascade", onUpdate: "cascade", allowNull: true });
-  
+
 db.character.belongsTo(db.user, {
   foreignKey: "userId",
   allowNull: true,
-  as: "user",
- 
 });
+
+
+db.bisum.belongsTo(db.user, {
+  foreignKey: "pjReceiver",
+  allowNull: true,
+});
+db.bisum.belongsTo(db.user, {
+  foreignKey: "pjSender",
+  allowNull: true,
+});
+
+
+
 module.exports = db;
