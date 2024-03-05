@@ -26,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         userId: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         level: {
             type: Sequelize.INTEGER,
