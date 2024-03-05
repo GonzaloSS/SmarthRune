@@ -28,6 +28,7 @@ db.user = require("./user.model.js")(sequelize, Sequelize);
 db.level = require("./level.model.js")(sequelize, Sequelize);
 db.character = require("./character.model.js")(sequelize, Sequelize);
 db.bisum = require("./bisum.model.js")(sequelize, Sequelize);
+db.inventory = require("./inventory.model.js")(sequelize, Sequelize);
 
 // ASSOCIATIONS
 
@@ -40,12 +41,20 @@ db.character.belongsTo(db.user, {
 });
 
 
-db.bisum.belongsTo(db.user, {
+db.bisum.belongsTo(db.character, {
   foreignKey: "pjReceiver",
+  as: "receiver",
   allowNull: true,
 });
-db.bisum.belongsTo(db.user, {
+db.bisum.belongsTo(db.character, {
   foreignKey: "pjSender",
+  as: "sender",
+  allowNull: true,
+});
+
+db.inventory.belongsTo(db.character, {
+  foreignKey: "pjId",
+  as: "character",
   allowNull: true,
 });
 

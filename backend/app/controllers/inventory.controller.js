@@ -1,31 +1,25 @@
 const db = require("../models");
+const Inventory = db.inventory;
 const Character = db.character;
-const User = db.user;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
 
-    const newCharacter = ({
-       name: req.body.name,
-       frag: req.body.frag || null,
-       frost: req.body.frost || null,
-       broam: req.body.broam || null,
-       grandfrag: req.body.grandfrag || null,
-       ruck: req.body.ruck || null,
-       level: req.body.level ,
-       userId: req.body.userId || null,
-       experience: req.body.experience,
-       warningWeight: req.body.warningWeight,
-       maxWeight: req.body.maxWeight
+    const newInventory = ({
+        name: req.body.name,
+        description: req.body.description,
+        quantity: req.body.quantity,
+        weight: req.body.weight,
+        pjId: req.body.pjId
     });
 
-    Character.create(newCharacter)
+    Inventory.create(newInventory)
       .then(data => {
             res.send(data);
         })
       .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while creating the Character."
+                message: err.message || "Some error occurred while creating the Inventory."
             });
         });
 }
@@ -33,23 +27,23 @@ exports.create = (req, res) => {
 exports.update = (req, res) => {
     const id = req.params.id;
 
-    Character.update(req.body, {
+    Inventory.update(req.body, {
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Character was updated successfully."
+            message: "Inventory was updated successfully."
           });
         } else {
           res.send({
-            message: `Cannot update Character with id=${id}.`
+            message: `Cannot update Inventory with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error updating Character with id=" + id
+          message: "Error updating Inventory with id=" + id
         });
       });
 }
@@ -57,39 +51,40 @@ exports.update = (req, res) => {
 exports.delete = (req, res) => {
     const id = req.params.id;
 
-    Character.destroy({
+    Inventory.destroy({
       where: { id: id }
     })
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Character was deleted successfully!"
+            message: "Inventory was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Character with id=${id}.`
+            message: `Cannot delete Inventory with id=${id}.`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Character with id=" + id
+          message: "Could not delete Inventory with id=" + id
         });
       });
 }
 
 exports.getOne = (req, res) => {
     let id = req.params.id;
-    Character.findByPk(id, {
+    Inventory.findByPk(id, {
         include: [{
-            model: User
+            model: Character,
+            as: 'character'
           }]
     })
       .then(data => {
         if (!data) {
           res.status(400).send({
             message:
-              "No Character found with that id"
+              "No Inventory found with that id"
           })
         }
         res.send(data);
@@ -98,7 +93,7 @@ exports.getOne = (req, res) => {
       .catch(err => {
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving Character with id"
+            err.message || "Some error occurred while retrieving Inventory with id"
         });
         return;
       });
@@ -106,9 +101,10 @@ exports.getOne = (req, res) => {
 }
 
 exports.getAll = (req, res) => {
-    Character.findAll({
+    Inventory.findAll({
         include: [{
-            model: User
+            model: Character,
+            as: 'character'
           }]
     })
     .then(data => {
@@ -117,7 +113,7 @@ exports.getAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving Character."
+          err.message || "Some error occurred while retrieving Inventory."
       });
     });
 }

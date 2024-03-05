@@ -1,6 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const inventory = sequelize.define("inventory", {
-        pjID: {
+        pjId: {
             type: Sequelize.INTEGER,
             allowNull: false,
         },
@@ -12,7 +12,11 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        quiantity: {
+        quantity: {
+            type: Sequelize.FLOAT,
+            allowNull: false,
+        },
+        weight: {
             type: Sequelize.FLOAT,
             allowNull: false,
         }

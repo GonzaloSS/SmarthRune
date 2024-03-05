@@ -36,6 +36,14 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.FLOAT,
             allowNull: false
         },
+        warningWeight: {
+            type: Sequelize.FLOAT,
+            allowNull: false
+        },
+        maxWeight: {
+            type: Sequelize.FLOAT,
+            allowNull: false
+        },
         createdAt: {
             type: Sequelize.DATE,
             defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),

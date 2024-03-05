@@ -2,6 +2,8 @@ const conversionController = require("../controllers/conversion.controller");
 const userController = require("../controllers/user.controller");
 const levelController = require("../controllers/level.controller");
 const characterController = require("../controllers/character.controller");
+const bisumController = require("../controllers/bisum.controller");
+const inventoryController = require("../controllers/inventory.controller");
 module.exports = function (app) {
     app.use(function (req, res, next) {
       res.header(
@@ -53,4 +55,29 @@ module.exports = function (app) {
     app.put("/api/updateCharacter/:id", characterController.update);
 
     app.delete("/api/deleteCharacter/:id", characterController.delete);
+
+    // BISUM ROUTES
+
+    app.post("/api/createBisum", bisumController.create);
+
+    app.get("/api/bisum", bisumController.getAll);
+
+    app.get("/api/bisum/:id", bisumController.getOne);
+
+    app.get("/api/sendMoney", bisumController.sendMoney);
+
+
+    // INVENTORY ROUTES
+
+    app.post("/api/createObject", inventoryController.create);
+
+    app.get("/api/object", inventoryController.getAll);
+
+    app.get("/api/object/:id", inventoryController.getOne);
+
+    app.put("/api/updateObject/:id", inventoryController.update);
+
+    app.delete("/api/deleteObject/:id", inventoryController.delete);
+
+
   }
