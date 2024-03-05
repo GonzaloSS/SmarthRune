@@ -1,6 +1,7 @@
 const conversionController = require("../controllers/conversion.controller");
 const userController = require("../controllers/user.controller");
 const levelController = require("../controllers/level.controller");
+const characterController = require("../controllers/character.controller");
 module.exports = function (app) {
     app.use(function (req, res, next) {
       res.header(
@@ -27,6 +28,7 @@ module.exports = function (app) {
 
     app.delete("/api/deleteUser/:id", userController.delete);
 
+
     // LEVEL ROUTES
 
     app.post("/api/createLevel", levelController.create);
@@ -38,4 +40,17 @@ module.exports = function (app) {
     app.put("/api/updateLevel/:id", levelController.update);
 
     app.delete("/api/deleteLevel/:id", levelController.delete);
+
+    
+    // CHARACTER ROUTES
+
+    app.post("/api/createCharacter", characterController.create);
+
+    app.get("/api/character", characterController.getAll);
+
+    app.get("/api/character/:id", characterController.getOne);
+
+    app.put("/api/updateCharacter/:id", characterController.update);
+
+    app.delete("/api/deleteCharacter/:id", characterController.delete);
   }
