@@ -45,6 +45,8 @@ module.exports = function (app) {
 
     app.delete("/api/deleteLevel/:id", levelController.delete);
 
+    app.get("/api/getLevelInfo/:level", levelController.getLevel);
+
     
     // CHARACTER ROUTES
 

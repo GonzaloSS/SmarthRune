@@ -1,1 +1,37 @@
-<p> prueba</p>
+<p-sidebar [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header">{{userName}}</ng-template>
+    <ng-template pTemplate="content">
+
+        <div *ngFor="let character of cs" class="content" >
+            <p-panel header="{{character['name']}}" [toggleable]="true" [collapsed]="true">
+                <p-button label="Inventory" (onClick)="goToInventory(character)" [text]="true"></p-button>
+                <p-button label="Level" (onClick)="goToLevel(character)" [text]="true"></p-button>
+                <p-button label="Bisum" (onClick)="goToBisum(character)" [text]="true"></p-button>
+            </p-panel>
+           
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">SmarthRune</ng-template>
+</p-sidebar>
+<p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+<hr>
+<p-card header="{{c['name']}}" subheader="Level: {{c['level']}}">
+    <ng-template pTemplate="header">
+        <p-image src="../../assets/images/matrix.jpg" alt="Image" width="250"></p-image>
+    </ng-template>
+    <p-progressBar [value]="percentage">
+        <ng-template pTemplate="content" let-value> 
+        <span>{{c['experience']}}/{{level['maxExp']}}</span>    
+        </ng-template>
+    </p-progressBar>
+    <ng-template pTemplate="footer">
+        <div>
+            <p-speedDial [model]="items" type="circle" [radius]="80" buttonClassName="p-button-warning"></p-speedDial>
+        </div>
+        
+    </ng-template>
+</p-card>
+
+
+
+

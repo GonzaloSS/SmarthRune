@@ -1,6 +1,7 @@
 const db = require("../models");
 const Level = db.level;
 const Op = db.Sequelize.Op;
+const levelService = require("../services/level.service");
 
 exports.create = (req, res) => {
 
@@ -105,4 +106,8 @@ exports.getAll = (req, res) => {
           err.message || "Some error occurred while retrieving Level."
       });
     });
+}
+
+exports.getLevel = async (req, res) => {
+  res.send(await levelService.retrieveLevel(req.params.level));
 }

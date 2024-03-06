@@ -13,6 +13,12 @@ import { SidebarModule } from 'primeng/sidebar';
 import {PanelModule} from 'primeng/panel';
 import { HttpClientModule } from '@angular/common/http';
 import { MyLevelComponent } from './my-level/my-level.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ImageModule } from 'primeng/image';
+import { CardModule } from 'primeng/card';
+import { SpeedDialModule } from 'primeng/speeddial';
+// For dynamic progressbar demo
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +36,12 @@ import { MyLevelComponent } from './my-level/my-level.component';
     AvatarGroupModule,
     SidebarModule,
     BadgeModule,
-    PanelModule
+    PanelModule,
+    ProgressBarModule,
+    ToastModule,
+    ImageModule,
+    CardModule,
+    SpeedDialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

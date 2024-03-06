@@ -4,9 +4,9 @@
 
         <div *ngFor="let character of characters" class="content" >
             <p-panel header="{{character['name']}}" [toggleable]="true" [collapsed]="true">
-                <p-button label="Inventory" (onClick)="goToInventory(character['id'])" [text]="true"></p-button>
-                <p-button label="Level" (onClick)="goToLevel(character['id'])" [text]="true"></p-button>
-                <p-button label="Bisum" (onClick)="goToBisum(character['id'])" [text]="true"></p-button>
+                <p-button label="Inventory" (onClick)="goToInventory(character)" [text]="true"></p-button>
+                <p-button label="Level" (onClick)="goToLevel(character, characters)" [text]="true"></p-button>
+                <p-button label="Bisum" (onClick)="goToBisum(character)" [text]="true"></p-button>
             </p-panel>
            
         </div>
