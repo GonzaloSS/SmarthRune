@@ -1,6 +1,7 @@
 const db = require("../models");
 const User = db.user;
 const Op = db.Sequelize.Op;
+const userService = require("../services/user.service");
 
 exports.create = (req, res) => {
     console.log(req.body.isAdmin)
@@ -111,4 +112,10 @@ exports.getAll = (req, res) => {
           err.message || "Some error occurred while retrieving User."
       });
     });
+}
+
+
+exports.getAllCharactersByUser = async (req, res) => {
+  const userId = await userService.retrieveUserId(req.params.email);
+  res.send(await userService.retrieveNameAndIdOfCharacter(userId));
 }

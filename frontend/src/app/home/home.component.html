@@ -1,0 +1,20 @@
+<p-sidebar [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header">{{userName}}</ng-template>
+    <ng-template pTemplate="content">
+
+        <div *ngFor="let character of characters" class="content" >
+            <p-panel header="{{character['name']}}" [toggleable]="true" [collapsed]="true">
+                <p-button label="Inventory" (onClick)="goToInventory(character['id'])" [text]="true"></p-button>
+                <p-button label="Level" (onClick)="goToLevel(character['id'])" [text]="true"></p-button>
+                <p-button label="Bisum" (onClick)="goToBisum(character['id'])" [text]="true"></p-button>
+            </p-panel>
+           
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">SmarthRune</ng-template>
+</p-sidebar>
+<p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+<div id="avatar" class="col-12 md:col-4">
+    <p-avatar image="{{userPicture}}" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+</div>
+

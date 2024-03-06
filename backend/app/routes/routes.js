@@ -30,6 +30,8 @@ module.exports = function (app) {
 
     app.delete("/api/deleteUser/:id", userController.delete);
 
+    app.get("/api/getUserCharacters/:email", userController.getAllCharactersByUser);
+
 
     // LEVEL ROUTES
 
