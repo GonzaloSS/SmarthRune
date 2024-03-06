@@ -15,18 +15,6 @@ var characters: any = undefined;
 })
 
 export class MyLevelComponent implements OnInit {
-  userData = JSON.parse(localStorage.getItem('google_info') || '{}');
-  userPicture = this.userData['picture'];
-  userName = this.userData['fullName'];
-
-  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
-
-  closeCallback(e: Event): void {
-      this.sidebarRef.close(e);
-  }
-
-  sidebarVisible: boolean = false;
-  
   level: any;
   percentage: any;
   c: any;
@@ -78,11 +66,9 @@ export class MyLevelComponent implements OnInit {
 
       this.c = character;
       this.cs = characters;
-      console.log(this.cs);
       await this.http.get<any>('http://localhost:8080/api/getLevelInfo/'+ character.level).subscribe(data => {
-        this.percentage = (character.experience / data[0].maxExp) * 100;
+        this.percentage = Math.round(((character.experience / data[0].maxExp) * 100)*10)/10;
         this.level = data[0];
-        console.log(this.level)
       })
     }
 }

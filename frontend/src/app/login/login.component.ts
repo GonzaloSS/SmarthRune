@@ -21,8 +21,7 @@ export class LoginComponent implements OnInit {
   
   google.accounts.id.renderButton(document.getElementById('google-btn'), {
       theme: 'outline',
-      size: 'rectangular',
-      type: "icon"
+      size: 'standard',
   });
 
 

@@ -7,6 +7,5 @@ exports.retrieveLevel = async function(levelNumber) {
         },
         raw: true
     })
-    console.log(level)
     return level
 }

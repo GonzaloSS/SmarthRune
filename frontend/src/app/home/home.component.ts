@@ -15,29 +15,12 @@ export class HomeComponent implements OnInit {
    userPicture = this.userData['picture'];
    userName = this.userData['fullName'];
    characters = [];
-   options = [
-    {name: "Inventory", onClick: "goToInventory({{character['id']}})}"},
-    {name: "Level", onClick: "goToLevel({{character['id']}})}"},
-   ]
-      @ViewChild('sidebarRef') sidebarRef!: Sidebar;
-
-    closeCallback(e: Event): void {
-        this.sidebarRef.close(e);
-    }
-
-    sidebarVisible: boolean = false;
 
   constructor( private router: Router,
                private http: HttpClient,
                private myLevel: MyLevelComponent) { }
   async ngOnInit(): Promise<void> {
-    if (localStorage.getItem('google_info')){
-      await this.http.get<any>('http://localhost:8080/api/getUserCharacters/'+ this.userData['email']).subscribe(data => {
-        this.characters = data;
-     },error => error = error);
-    } else {
-      this.router.navigate(['']);
-    }
+   
   }
 
 

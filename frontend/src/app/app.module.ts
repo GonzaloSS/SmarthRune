@@ -17,14 +17,20 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { TieredMenuModule } from 'primeng/tieredmenu';
+import { TreeModule } from 'primeng/tree';
 // For dynamic progressbar demo
 import { ToastModule } from 'primeng/toast';
+import { NavbarComponent } from './navbar/navbar.component';
+import { InventoryComponent } from './inventory/inventory.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    MyLevelComponent
+    MyLevelComponent,
+    NavbarComponent,
+    InventoryComponent
   ],
   imports: [
     HttpClientModule,
@@ -41,7 +47,9 @@ import { ToastModule } from 'primeng/toast';
     ToastModule,
     ImageModule,
     CardModule,
-    SpeedDialModule
+    SpeedDialModule,
+    TieredMenuModule,
+    TreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

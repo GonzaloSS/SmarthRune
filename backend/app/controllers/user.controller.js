@@ -4,7 +4,6 @@ const Op = db.Sequelize.Op;
 const userService = require("../services/user.service");
 
 exports.create = (req, res) => {
-    console.log(req.body.isAdmin)
  if (!req.body.address && !req.body.isAdmin) {
     res.status(400).send({
       message: "Please provide an address and an isAdmin"
@@ -90,8 +89,6 @@ exports.getOne = (req, res) => {
         return;
       })
       .catch(err => {
-        console.log(err.message);
-        console.log("hola");
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving User with id"

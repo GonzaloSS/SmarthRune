@@ -1,0 +1,17 @@
+<p-sidebar [(visible)]="sidebarVisible">
+    <ng-template pTemplate="header">{{userName}}</ng-template>
+    <ng-template pTemplate="content">
+        <p-tree [value]="files" class="w-full md:w-30rem" selectionMode="single" [(selection)]="selectedFile"
+        (onNodeExpand)="nodeExpand($event)" (onNodeCollapse)="nodeCollapse($event)" (onNodeSelect)="nodeSelect($event)"(onNodeUnselect)="nodeUnselect($event)"></p-tree>
+
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div>SmarthRune <i (click)="signOut()" id="logout" class="pi pi-sign-out"></i></div>
+       
+    </ng-template>
+</p-sidebar>
+<p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+<div id="avatar" class="col-12 md:col-4">
+    <p-avatar image="{{userPicture}}" styleClass="mr-2" size="large" shape="circle" id="avatar"></p-avatar>
+</div>
+
