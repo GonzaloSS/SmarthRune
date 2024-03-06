@@ -32,6 +32,8 @@ module.exports = function (app) {
 
     app.get("/api/getUserCharacters/:email", userController.getAllCharactersByUser);
 
+    app.get("/api/isAdmin/:email", userController.isAdmin);
+
 
     // LEVEL ROUTES
 

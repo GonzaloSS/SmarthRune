@@ -66,7 +66,7 @@ export class MyLevelComponent implements OnInit {
 
       this.c = character;
       this.cs = characters;
-      await this.http.get<any>('http://localhost:8080/api/getLevelInfo/'+ character.level).subscribe(data => {
+      this.http.get<any>('http://localhost:8080/api/getLevelInfo/'+ character.level).subscribe(data => {
         this.percentage = Math.round(((character.experience / data[0].maxExp) * 100)*10)/10;
         this.level = data[0];
       })

@@ -116,3 +116,7 @@ exports.getAllCharactersByUser = async (req, res) => {
   const userId = await userService.retrieveUserId(req.params.email);
   res.send(await userService.retrieveNameAndIdOfCharacter(userId));
 }
+
+exports.isAdmin = async (req, res) => {
+  res.send(await userService.isAdmin(req.params.email));
+}

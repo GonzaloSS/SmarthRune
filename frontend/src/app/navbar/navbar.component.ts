@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Sidebar } from 'primeng/sidebar';
 import { MyLevelComponent } from '../my-level/my-level.component';
 import { MenuItem, TreeNode } from 'primeng/api';
-
+import { API_URL} from '../../constants';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -56,9 +56,125 @@ export class NavbarComponent implements OnInit {
 
 
     if (localStorage.getItem('google_info')){
-      this.http.get<any>('http://localhost:8080/api/getUserCharacters/' + this.userData['email']).subscribe(data => {
+      
+      this.http.get<any>(API_URL+ '/isAdmin/' + this.userData['email']).subscribe(data => {
+        if (data[0].isAdmin === 1) {
+          localStorage.setItem('isAdmin', "true");
+          this.files.push(
+            {
+              key: 'admin',
+              label: 'Configuration',
+              data: 'Admin configuration',
+              icon: 'pi pi-fw pi-user',
+              children: [
+                  {
+                      key: 'A-1',
+                      label: 'Users',
+                      data: 'Work Folder',
+                      icon: 'pi pi-fw pi-shopping-bag',
+                      children: [
+                        {
+                          key: 'A-1.1',
+                          label: 'List all users',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        },
+                        {
+                          key: 'A-1.2',
+                          label: 'Create an user',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        },
+                      ]
+                  },
+                  {
+                    key:'A-2',
+                    label: 'Characters',
+                    data: 'Work Folder',
+                    icon: 'pi pi-fw pi-sort-up',
+                    children: [
+                      {
+                        key: 'A-2.1',
+                        label: 'List all characters',
+                        data: 'Work Folder',
+                        icon: 'pi pi-fw pi-shopping-bag',
+                
+                      },
+                      {
+                        key: 'A-2.2',
+                        label: 'Create a character',
+                        data: 'Work Folder',
+                        icon: 'pi pi-fw pi-shopping-bag',
+                
+                      },
+                    ]
+                  },
+                  {
+                      key: 'A-3',
+                      label: 'Levels',
+                      data: 'Home Folder',
+                      icon: 'pi pi-fw pi-euro',
+                      children: [
+                        {
+                          key: 'A-3.1',
+                          label: 'List all levels',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        },
+                        {
+                          key: 'A-3.2',
+                          label: 'Create a level',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        },
+                      ]
+                  },
+                  {
+                      key: 'A-4',
+                      label: 'Bisums',
+                      data: 'Home Folder',
+                      icon: 'pi pi-fw pi-euro',
+                      children: [
+                        {
+                          key: 'A-4.1',
+                          label: 'Bisum history',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        }
+                      ]
+                  },
+                  {
+                      key: 'A-5',
+                      label: 'Calendar',
+                      data: 'Home Folder',
+                      icon: 'pi pi-fw pi-euro',
+                      children: [
+                        {
+                          key: 'A-5.1',
+                          label: 'Create new event',
+                          data: 'Work Folder',
+                          icon: 'pi pi-fw pi-shopping-bag',
+                  
+                        }
+                      ]
+                  }
+              ]
+          }
+          )
+        } else {
+          localStorage.setItem('isAdmin', "false");
+        }
+      });
+
+      this.http.get<any>(API_URL+ '/getUserCharacters/' + this.userData['email']).subscribe(data => {
         this.characters = data;
         this.characters.forEach(character => {
+
           this.files.push(
             {
               key: character['id'],
@@ -135,6 +251,7 @@ export class NavbarComponent implements OnInit {
 
   signOut() {
     localStorage.removeItem('google_info');
+    localStorage.removeItem('isAdmin');
     this.router.navigate(['']);
   }
 
