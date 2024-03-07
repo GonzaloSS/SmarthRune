@@ -4,7 +4,8 @@ const Op = db.Sequelize.Op;
 const userService = require("../services/user.service");
 
 exports.create = (req, res) => {
- if (!req.body.address && !req.body.isAdmin) {
+  console.log(req.body)
+ if (!req.body.email) {
     res.status(400).send({
       message: "Please provide an address and an isAdmin"
     });
@@ -12,10 +13,11 @@ exports.create = (req, res) => {
  }
 
     const newUser = ({
-        email: req.body.address,
+        email: req.body.email,
         isAdmin: req.body.isAdmin
     });
 
+    console.log(newUser)
     User.create(newUser)
       .then(data => {
             res.send(data);

@@ -84,8 +84,6 @@ exports.getOne = (req, res) => {
         return;
       })
       .catch(err => {
-        console.log(err.message);
-        console.log("hola");
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving Level with id"

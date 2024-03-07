@@ -242,6 +242,18 @@ export class NavbarComponent implements OnInit {
       this.goToBisum(event.node.parent.data);
     } else if (event.node.label === 'Home') {
       this.router.navigate(['home']);
+    } else if (event.node.key === 'A-1.1'){
+      this.router.navigate(['user/listUsers']);
+    } else if (event.node.key === 'A-1.2'){
+      this.router.navigate(['user/createUser']);
+    } else if (event.node.key === 'A-2.1'){
+      this.router.navigate(['character/listCharacters']);
+    } else if (event.node.key === 'A-2.2'){
+      this.router.navigate(['character/createCharacter']);
+    } else if (event.node.key === 'A-3.1'){
+      this.router.navigate(['level/listLevels']);
+    } else if (event.node.key === 'A-3.2'){
+      this.router.navigate(['level/createLevel']);
     }
   }
 

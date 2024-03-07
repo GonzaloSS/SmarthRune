@@ -1,3 +1,20 @@
+
+<p-toolbar styleClass="bg-blue-900 shadow-2" [style]="{ 'background-color': '#3B82F6' }">
+    <ng-template pTemplate="start">
+        <p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
+
+    </ng-template>
+    <ng-template pTemplate="center">
+        <div class="flex flex-wrap align-items-center gap-3">
+           <p style="color: white">Bienvenido {{userName}}</p>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div class="flex align-items-center gap-2">
+            <p-avatar image="{{userPicture}}" styleClass="mr-2" size="large" shape="circle" id="avatar"></p-avatar>
+        </div>
+    </ng-template>
+</p-toolbar>
 <p-sidebar [(visible)]="sidebarVisible">
     <ng-template pTemplate="header">{{userName}}</ng-template>
     <ng-template pTemplate="content">
@@ -7,11 +24,6 @@
     </ng-template>
     <ng-template pTemplate="footer">
         <div>SmarthRune <i (click)="signOut()" id="logout" class="pi pi-sign-out"></i></div>
-       
     </ng-template>
 </p-sidebar>
-<p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
-<div id="avatar" class="col-12 md:col-4">
-    <p-avatar image="{{userPicture}}" styleClass="mr-2" size="large" shape="circle" id="avatar"></p-avatar>
-</div>
 

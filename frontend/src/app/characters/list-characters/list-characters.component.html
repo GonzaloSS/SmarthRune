@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<p-divider></p-divider>
+<p-table [value]="characters" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Frag</th>
+            <th>Frost</th>
+            <th>Broam</th>
+            <th>Gran Frag</th>
+            <th>Ruck</th>
+            <th>User</th>
+            <th>Level</th>
+            <th>Experience</th>
+            <th>Warning Weight</th>
+            <th>Max Weight</th>
+            <th>Features</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-characters>
+        <tr>
+            <td>{{characters.name}}</td>
+            <td>{{characters.frag}}</td>
+            <td>{{characters.frost}}</td>
+            <td>{{characters.broam}}</td>
+            <td>{{characters.grandFrag}}</td>
+            <td>{{characters.ruck}}</td>
+            <td>{{characters.user.email}}</td>
+            <td>{{characters.level}}</td>
+            <td>{{characters.experience}}</td>
+            <td>{{characters.warningWeight}}</td>
+            <td>{{characters.maxWeight}}</td>
+            <td>
+                <p-button icon="pi pi-user-edit" [rounded]="true" [text]="true" severity="success"></p-button>
+                <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-divider></p-divider>
+<p-button label="Añadir Personaje" icon="pi pi-plus" iconPos="left" (click)="goToCreateCharacter()"></p-button>

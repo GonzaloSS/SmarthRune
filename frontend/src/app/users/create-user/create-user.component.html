@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="card flex flex-column md:flex-row gap-3">
+
+    <form class="flex align-items-center gap-1" [formGroup]="userForm">
+       
+        <p-inputGroup>
+            <p-inputGroupAddon>
+                <label for="admin">isAdmin?:  </label>
+                <p-checkbox formControlName="isAdmin" value="true" inputId="admin"></p-checkbox>
+            </p-inputGroupAddon>
+        </p-inputGroup>
+
+        <p-inputGroup>
+            <p-inputGroupAddon>
+                <i class="pi pi-user"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Email" formControlName="email" />
+        </p-inputGroup>
+        <p-button (click)="newUser(userForm)" icon="pi pi-bars"></p-button>
+    </form>
+   
+    
+    </div>

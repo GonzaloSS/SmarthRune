@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<p-divider></p-divider>
+<p-table [value]="levels" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Nivel</th>
+            <th>Min Exp</th>
+            <th>Max Exp</th>
+            <th>Features</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-levels>
+        <tr>
+            <td>{{levels.level}}</td>
+            <td>{{levels.minExp}}</td>
+            <td>{{levels.maxExp}}</td>
+            <td>
+                <p-button icon="pi pi-user-edit" [rounded]="true" [text]="true" severity="success"></p-button>
+                <p-button icon="pi pi-trash" [rounded]="true" [text]="true" severity="danger"></p-button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<p-divider></p-divider>
+<p-button label="Añadir nivel" icon="pi pi-plus" iconPos="left" (click)="goToCreateLevel()"></p-button>
