@@ -29,6 +29,7 @@ db.level = require("./level.model.js")(sequelize, Sequelize);
 db.character = require("./character.model.js")(sequelize, Sequelize);
 db.bisum = require("./bisum.model.js")(sequelize, Sequelize);
 db.inventory = require("./inventory.model.js")(sequelize, Sequelize);
+db.rosharCalendar = require("./rosharCalendar.model.js")(sequelize, Sequelize);
 
 // ASSOCIATIONS
 

@@ -43,13 +43,13 @@ export class NavbarComponent implements OnInit {
     });
     this.files.push({
       key: '0',
-      label: 'Calendar',
+      label: 'Calendario',
       data: 'User Calendar',
       icon: 'pi pi-fw pi-calendar',
     });
     this.files.push({
       key: '000',
-      label: 'Currency converter',
+      label: 'Monedas de Roshar',
       data: 'Converter',
       icon: 'pi pi-fw pi-dollar',
     });
@@ -63,7 +63,7 @@ export class NavbarComponent implements OnInit {
           this.files.push(
             {
               key: 'admin',
-              label: 'Configuration',
+              label: 'Configuración',
               data: 'Admin configuration',
               icon: 'pi pi-fw pi-user',
               children: [
@@ -182,24 +182,24 @@ export class NavbarComponent implements OnInit {
               data: character,
               icon: 'pi pi-fw pi-user',
               children: [
-                  {
-                      key: character['id']+'-0',
-                      label: 'Inventory',
-                      data: 'Work Folder',
-                      icon: 'pi pi-fw pi-shopping-bag',
-                  },
-                  {
-                    key: character['id']+'-1',
-                    label: 'Level',
+                {
+                  key: character['id']+'-1',
+                  label: 'Estadísticas',
+                  data: 'Work Folder',
+                  icon: 'pi pi-fw pi-sort-up',
+                },
+                {
+                    key: character['id']+'-0',
+                    label: 'Inventario',
                     data: 'Work Folder',
-                    icon: 'pi pi-fw pi-sort-up',
-                  },
-                  {
-                      key: character['id']+'-2',
-                      label: 'Bisum',
-                      data: 'Home Folder',
-                      icon: 'pi pi-fw pi-euro',
-                  }
+                    icon: 'pi pi-fw pi-shopping-bag',
+                },
+                {
+                    key: character['id']+'-2',
+                    label: 'Monedero',
+                    data: 'Home Folder',
+                    icon: 'pi pi-fw pi-euro',
+                }
               ]
           }
           )
@@ -234,11 +234,11 @@ export class NavbarComponent implements OnInit {
   }
 
   nodeSelect(event: any) {
-    if (event.node.label === 'Inventory') {
+    if (event.node.label === 'Estadísticas') {
       this.goToInventory(event.node.parent.data);
-    } else if (event.node.label === 'Level') {
+    } else if (event.node.label === 'Inventario') {
       this.goToLevel(event.node.parent.data, this.characters);
-    } else if (event.node.label === 'Bisum') {
+    } else if (event.node.label === 'Monedero') {
       this.goToBisum(event.node.parent.data);
     } else if (event.node.label === 'Home') {
       this.router.navigate(['home']);

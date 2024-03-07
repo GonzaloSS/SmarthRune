@@ -4,6 +4,7 @@ const levelController = require("../controllers/level.controller");
 const characterController = require("../controllers/character.controller");
 const bisumController = require("../controllers/bisum.controller");
 const inventoryController = require("../controllers/inventory.controller");
+const rosharCalendarController = require("../controllers/rosharCalendar.controller");
 module.exports = function (app) {
     app.use(function (req, res, next) {
       res.header(
@@ -86,4 +87,17 @@ module.exports = function (app) {
     app.delete("/api/deleteObject/:id", inventoryController.delete);
 
 
+    // ROSHAR CALENDAR ROUTES
+
+    app.post("/api/rosharCalendar", rosharCalendarController.create);
+
+    app.get("/api/rosharCalendar", rosharCalendarController.getAll);
+
+    app.get("/api/rosharCalendar/:id", rosharCalendarController.getOne);
+
+    app.put("/api/updateRosharCalendar/:id", rosharCalendarController.update);
+
+    app.delete("/api/deleteRosharCalendar/:id", rosharCalendarController.delete);
+
+    app.get("/api/findEnabledRosharCalendar", rosharCalendarController.findEnabled);
   }

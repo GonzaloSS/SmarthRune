@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Sidebar } from 'primeng/sidebar';
 import { HttpClient } from '@angular/common/http'
 import { MyLevelComponent } from '../my-level/my-level.component';
+import { API_URL } from '../../constants';
 
 
 @Component({
@@ -15,12 +16,15 @@ export class HomeComponent implements OnInit {
    userPicture = this.userData['picture'];
    userName = this.userData['fullName'];
    characters = [];
-
+   rosharCalendar: any = [];
   constructor( private router: Router,
                private http: HttpClient,
                private myLevel: MyLevelComponent) { }
   async ngOnInit(): Promise<void> {
-   
+    this.http.get<any>(API_URL+ '/findEnabledRosharCalendar/').subscribe(data => {
+      this.rosharCalendar = data[0]
+      console.log(this.rosharCalendar)
+    });
   }
 
 

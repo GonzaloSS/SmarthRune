@@ -36,6 +36,9 @@ import { ListCharactersComponent } from './characters/list-characters/list-chara
 import { CreateCharacterComponent } from './characters/create-character/create-character.component';
 import { ListLevelsComponent } from './levels/list-levels/list-levels.component';
 import { CreateLevelComponent } from './levels/create-level/create-level.component';
+import { CreateRosharCalendarComponent } from './rosharCalendar/create-roshar-calendar/create-roshar-calendar.component';
+import { ListRosharCalendarComponent } from './rosharCalendar/list-roshar-calendar/list-roshar-calendar.component';
+import { DropdownModule } from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,9 @@ import { CreateLevelComponent } from './levels/create-level/create-level.compone
     ListCharactersComponent,
     CreateCharacterComponent,
     ListLevelsComponent,
-    CreateLevelComponent
+    CreateLevelComponent,
+    CreateRosharCalendarComponent,
+    ListRosharCalendarComponent
   ],
   imports: [
     HttpClientModule,
@@ -76,7 +81,8 @@ import { CreateLevelComponent } from './levels/create-level/create-level.compone
     InputGroupModule,
     InputGroupAddonModule,
     ReactiveFormsModule,
-    CheckboxModule
+    CheckboxModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

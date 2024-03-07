@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="card flex flex-column md:flex-row gap-3">
+
+    <form class="flex align-items-center gap-1" [formGroup]="rosharCalendarForm">
+       
+
+                <div class="card flex justify-content-center">
+                    <p-dropdown formControlName="initials" [options]="months"  optionLabel="month" [showClear]="true" placeholder="Select a Month"></p-dropdown>
+                </div>
+                <div class="card flex justify-content-center">
+                    <p-dropdown  formControlName="day" [options]="days"  optionLabel="day" [showClear]="true" placeholder="Select a Month"></p-dropdown>
+                </div>
+
+                <div class="card flex justify-content-center">
+                    <p-dropdown formControlName="weather" [options]="weather"  optionLabel="name" [showClear]="true" placeholder="Select a Month"></p-dropdown>
+                </div>
+
+
+
+        <p-inputGroup>
+            <p-inputGroupAddon>
+                <i class="pi pi-user"></i>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Lugar" formControlName="place" />
+        </p-inputGroup>
+        <p-button (click)="newRosharCalendar(rosharCalendarForm)" icon="pi pi-plus"></p-button>
+    </form>
+   
+    
+    </div>
