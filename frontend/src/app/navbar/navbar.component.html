@@ -1,12 +1,28 @@
-
-<p-toolbar styleClass="bg-blue-900 shadow-2" [style]="{ 'background-color': '#3B82F6' }">
+<p-toolbar 
+    styleClass="bg-blue-900 shadow-2" 
+    [style]="{
+        'background-color': '#80848a',
+        'position': 'fixed',
+        'top': '0',
+        'left': '0',
+        'width': '100vw',
+        'z-index': '1000',
+        'border-radius': '0'
+    }">
+    
     <ng-template pTemplate="start">
-        <p-button (click)="sidebarVisible = true" icon="pi pi-bars"></p-button>
-
+        <p-button 
+            (click)="sidebarVisible = true" 
+            icon="pi pi-bars" 
+            [style]="{
+                'background-color': '#80848a', 
+                'border-color': '#80848a'
+            }">
+        </p-button>
     </ng-template>
     <ng-template pTemplate="center">
         <div class="flex flex-wrap align-items-center gap-3">
-           <p style="color: white">Bienvenido {{userName}}</p>
+            <p style="color: white">Bienvenido {{userName}}</p>
         </div>
     </ng-template>
     <ng-template pTemplate="end">

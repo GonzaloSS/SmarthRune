@@ -20,6 +20,7 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { TreeModule } from 'primeng/tree';
 import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
 // For dynamic progressbar demo
 import { ToastModule } from 'primeng/toast';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -39,6 +40,9 @@ import { CreateLevelComponent } from './levels/create-level/create-level.compone
 import { CreateRosharCalendarComponent } from './rosharCalendar/create-roshar-calendar/create-roshar-calendar.component';
 import { ListRosharCalendarComponent } from './rosharCalendar/list-roshar-calendar/list-roshar-calendar.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { FooterComponent } from './footer/footer.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -55,13 +59,18 @@ import { DropdownModule } from 'primeng/dropdown';
     ListLevelsComponent,
     CreateLevelComponent,
     CreateRosharCalendarComponent,
-    ListRosharCalendarComponent
+    ListRosharCalendarComponent,
+    FooterComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
     ButtonModule,
     AvatarModule,
     AvatarGroupModule,
@@ -82,7 +91,9 @@ import { DropdownModule } from 'primeng/dropdown';
     InputGroupAddonModule,
     ReactiveFormsModule,
     CheckboxModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

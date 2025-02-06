@@ -26,7 +26,7 @@ exports.retrieveUserId = async function(email) {
 
 exports.isAdmin = async function(email) {
     const isAdmin = await User.findAll({
-        attributes: ["isAdmin"],
+        attributes: ["isAdmin", "id"],
         where: {
             email: email
         },

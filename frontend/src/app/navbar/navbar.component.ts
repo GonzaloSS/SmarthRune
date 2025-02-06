@@ -56,8 +56,8 @@ export class NavbarComponent implements OnInit {
 
 
     if (localStorage.getItem('google_info')){
-      
       this.http.get<any>(API_URL+ '/isAdmin/' + this.userData['email']).subscribe(data => {
+        localStorage.setItem('id', data[0].id);
         if (data[0].isAdmin === 1) {
           localStorage.setItem('isAdmin', "true");
           this.files.push(

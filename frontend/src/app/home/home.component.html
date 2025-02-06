@@ -1,9 +1,103 @@
 <app-navbar></app-navbar>
-<div style="background-color: #3B82F6;">
-    <p-image class="img-responsive" src="../../assets/images/logoBlack.png" alt="Image" width="250" ></p-image>
+
+<div  style="background-color: #e1e2e2; padding-top: 100px; border-radius: 20%;">
+   <H1 style="color: rgb(255, 255, 255); text-align: center;">RuneLink</H1>
+
+   <p-card *ngFor="let character of characters"  [style]="{ 
+    width: 'calc(35% - 1rem)', 
+    height: '200px',
+    display: 'inline-block', 
+    margin: '0.5rem',
+    position: 'relative',
+    'background-color': '#f0f0f0' 
+}" (click)="openModal(character)">
+    
+    <!-- Header Section -->
+    <ng-template pTemplate="header" class="card-background">
+        <img 
+        src="../../assets/images/character{{character.id}}.png" 
+        alt="Image" 
+        width="50" 
+        height="150" 
+        style="object-fit: cover;" />
+       <!-- Adjust the image size -->
+    </ng-template>
+
+    <!-- Title Section -->
+    <ng-template pTemplate="title">
+        {{ character.name }}
+    </ng-template>
+
+    <!-- Floating Circle with Level -->
+    <div style="position: absolute; top: 10px; right: 2px; 
+                width: 40px; height: 40px; border-radius: 50%; 
+                background-color: #787c83; color: white; 
+                display: flex; justify-content: center; align-items: center; 
+                font-size: 14px;">
+        LV {{ character.level }}
+    </div>
+</p-card>
+
+<p-dialog 
+  header="Diario de UNIDAD" 
+  [modal]="true" 
+  [(visible)]="visible" 
+  [style]="{ width: '50rem',  background: 'gray' }" 
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
+  <div class="container" style="display: flex; align-items: center;">
+    <img 
+      src="../../assets/images/character{{character.id}}.png" 
+      alt="Image" 
+      width="100" 
+      height="150" 
+      style="margin-right: 10px;" 
+    />
+    <div style="display: flex; flex-direction: column; width: 200px; ">
+      <p style="color: white; margin-bottom: 5px; text-align: left; width: 100%;">{{character.name}}</p>
+      <p style="color: white; margin-bottom: 5px; text-align: left; width: 100%;">Nvl {{character.level}}</p>
+      <p-progressBar [value]="progress" [showValue]="false"></p-progressBar>
+    </div>
+  </div>
+  
+  
+   
+    <p class="mb-8" style="color: white;">
+       <b>Alforja</b> - Divisa común
+    </p>
+    <div class="flex-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+        <!-- Image 1 with values -->
+        <div *ngFor="let money of moneyInventory" class="flex-item" style="display: flex; flex-direction: column; align-items: center; width: calc(33% - 20px); position: relative;">
+            <!-- Image -->
+            <img src="../../assets/images/bolsa.png" alt="Image 1" style="width: 110%; height: auto; border-radius: 8px;" />
+          
+            <!-- Text inside image -->
+            <div class="values" style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+              <p style="margin: 0; font-size: 1.2em; font-weight: bold; color: black;">{{money.name}}</p>
+              <p style="margin: 0; font-size: 1.2em; font-weight: bold; color: black;">{{money.coin}}</p>
+            </div>
+          </div>
+          
+    </div>
+</p-dialog>
+
 </div>
 
+<div class="container">
+    <div class="session-card">
+      <i class="pi pi-calendar"></i>
+      <div class="session-info">
+        <p>Tu próxima sesión: Grupo Bruma</p>
+        <p>En 6 D 5 H 35 M</p>
+      </div>
+    </div>
+  </div>
+  
+  
+<div class="calendar-container">
+    <mwl-calendar-month-view 
+      [viewDate]="viewDate" 
+      [events]="events">
+    </mwl-calendar-month-view>
+  </div>
 
-<p>{{rosharCalendar.place}}</p>
-<p>{{rosharCalendar.month}}, {{rosharCalendar.day}}</p>
-
+<app-footer></app-footer>

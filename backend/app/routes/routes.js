@@ -55,7 +55,7 @@ module.exports = function (app) {
 
     app.post("/api/createCharacter", characterController.create);
 
-    app.get("/api/character", characterController.getAll);
+    app.get("/api/character/user/:id", characterController.getAll);
 
     app.get("/api/character/:id", characterController.getOne);
 
