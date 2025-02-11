@@ -43,6 +43,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FooterComponent } from './footer/footer.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BisumComponent } from './bisum/bisum.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     CreateLevelComponent,
     CreateRosharCalendarComponent,
     ListRosharCalendarComponent,
-    FooterComponent
+    FooterComponent,
+    BisumComponent
   ],
   imports: [
     HttpClientModule,

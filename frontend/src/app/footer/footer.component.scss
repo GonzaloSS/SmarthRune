@@ -1,12 +1,41 @@
 .footer {
-    background-color: #80848a;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 1000;
-    padding: 10px;
-    color: white;
-    text-align: left;
+  background-color: #80848a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  border-radius: 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .footer-texts {
+    display: flex;
+    flex-direction: column;
+
+    p {
+      color: white;
+      margin: 0;
+    }
   }
-  
+
+  .settings-button {
+    background-color: none;
+  }
+
+  .settings-button:hover {
+    opacity: 0.7;
+  }
+}
+
+
+#logout {
+  float: right;
+}
+
+
+#avatar {
+  float: right;
+}

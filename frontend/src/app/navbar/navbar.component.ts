@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
 
   characters = [];
-     @ViewChild('sidebarRef') sidebarRef!: Sidebar;
+  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
    closeCallback(e: Event): void {
        this.sidebarRef.close(e);

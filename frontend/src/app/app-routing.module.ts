@@ -12,6 +12,7 @@ import { ListLevelsComponent } from './levels/list-levels/list-levels.component'
 import { CreateLevelComponent } from './levels/create-level/create-level.component';
 import { ListRosharCalendarComponent } from './rosharCalendar/list-roshar-calendar/list-roshar-calendar.component';
 import { CreateRosharCalendarComponent } from './rosharCalendar/create-roshar-calendar/create-roshar-calendar.component';
+import { BisumComponent } from './bisum/bisum.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'level/listLevels', component: ListLevelsComponent},
   { path: 'level/createLevel', component: CreateLevelComponent},
   { path: 'rosharCalendar/listAll', component: ListRosharCalendarComponent},
-  { path: 'rosharCalendar/createRosharCalendar',component: CreateRosharCalendarComponent}
+  { path: 'rosharCalendar/createRosharCalendar',component: CreateRosharCalendarComponent},
+  { path: 'bisum', component: BisumComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
